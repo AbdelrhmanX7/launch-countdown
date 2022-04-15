@@ -1,0 +1,235 @@
+:root {
+    --Anim-move: paused;
+    --Anim-m: paused;
+    --Anim-work3: paused;
+    --Anim-work2: paused;
+    --Anim-work: paused;
+    --Anim-work-bottom: paused;
+    --Anim-work-bottom2: paused;
+    --Anim-work-bottom3: paused;
+}
+* {
+    margin: 0px;
+    font-family: 'Red Hat Text', sans-serif;
+}
+body {
+    background-image: linear-gradient(to top, #100e14, #1e1e28);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh
+}
+main {
+    position: relative;
+    width: 100vw; height: 100vh;
+    background-image: url("images/bg-stars.svg");
+    display: flex; justify-content: center; align-items: center;
+}
+.bg-img {
+    position: absolute;
+    bottom: 0px;
+    width: 100vw; height: 25%;
+    background-image: url('images/pattern-hills.svg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bg-img img {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.all-desgin {
+    position: relative;
+    width: 100vw; height: 100vh;
+    display: flex; justify-content: space-evenly; align-items: center;
+    text-transform: uppercase;
+}
+.header-text {
+    position: absolute;
+    top: 120px;
+    font-size: 20px;
+    letter-spacing: 10px;
+    font-weight: 700;
+    color: white;
+}
+.all-clock-desing {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between; align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    color: hsl(345, 95%, 68%);
+}
+.all-clock-desing::before {
+    content: "";
+    position: absolute;
+    top: 37.8%; left: 0%;
+    transform: translate(-50%,-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #181727;
+    z-index: 2;
+}
+.all-clock-desing::after {
+    content: "";
+    position: absolute;
+    top: 37.8%; left: 100%;
+    transform: translate(-50%,-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #181727;
+    z-index: 1;
+}
+.top-clock-desing {
+    position: relative;
+    width: 267px;
+    height: 125px;
+    background-color: #34364e;
+    border-radius: 10px;
+    font-size: 145px;
+    font-weight: 700;
+    color: #d74f6f;
+    text-align: center;
+    overflow: hidden;
+}
+.top-clock-desing::before {
+    content: attr(data-time);
+    position: absolute;
+    font-size: 145px;
+    font-weight: 700;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: hsl(236, 18%, 16%);
+    color: #d74f6f;
+    transform-origin: bottom center;
+    transition: 0.5s;
+    right: 0px;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg);
+    box-sizing: border-box;
+    padding-top: 29px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.top-clock-desing span {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #d74f6f;
+}
+.bottom-clock-desing {
+    position: relative;
+    width: 267px; height: 125px;
+    background-color: #34364e;
+    border-radius: 10px;
+    box-shadow: 0px 12px 1px 0px rgba(0, 0, 0, 0.181);
+    overflow: hidden;
+    font-size: 145px;
+    font-weight: 700;
+    color: #d74f6f;
+}
+.bottom-clock-desing::before {
+    content: attr(data-time);
+    position: absolute;
+    font-size: 145px;
+    font-weight: 700;
+    background-color: #34364e;
+    width: 100%;
+    height: fit-content;
+    right: 0px;
+    text-align: center;
+    color: #fb5e85;
+    transform-origin: center;
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    box-sizing: border-box;
+    z-index: 1;
+    overflow: hidden;
+    bottom: 23%;
+    animation: myanim-bottom 0.5s infinite linear;
+    animation-play-state: var(--Anim-m);
+}
+.bottom-clock-desing::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 0px;
+    background-color: #272525b3;
+    z-index: 2;
+}
+.bottom-clock-desing span {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fb5e85;
+}
+.clock-time-text {
+    color: hsl(237, 18%, 59%);
+    letter-spacing: 7px;
+    font-weight: 700;
+    margin: 40px 0px 20px;
+}
+@keyframes myanim {
+    0% { 
+        background-color: #34364e;
+        transform: rotateX(0deg);
+    }
+    10% {
+        background-color: hsl(236, 18%, 16%);
+    }
+    100% {
+        transform: rotateX(120deg);
+    }
+}
+@keyframes myanim-bottom {
+    from { 
+        transform: rotateX(90deg);
+    }
+    to {
+        transform: rotateX(0deg);
+    }
+}
+.all-clock-desing:nth-of-type(2) .top-clock-desing::before {
+    animation: myanim 0.5s linear infinite;
+    animation-play-state: var(--Anim-work3);
+}
+.all-clock-desing:nth-of-type(3) .top-clock-desing::before {
+    animation: myanim 0.5s linear infinite;
+    animation-play-state: var(--Anim-work2);
+}
+.all-clock-desing:nth-of-type(4) .top-clock-desing::before {
+    animation: myanim 0.5s linear infinite;
+    animation-play-state: var(--Anim-work);
+}
+.all-clock-desing:nth-of-type(5) .top-clock-desing::before {
+    animation: myanim 0.5s infinite linear;
+    animation-play-state: var(--Anim-move);
+}
+
+
+.all-clock-desing:nth-of-type(2) .bottom-clock-desing::before {
+    animation: myanim-bottom 0.5s linear infinite;
+    animation-play-state: var(--Anim-work-bottom3);
+}
+.all-clock-desing:nth-of-type(3) .bottom-clock-desing::before {
+    animation: myanim-bottom 0.5s linear infinite;
+    animation-play-state: var(--Anim-work-bottom2);
+}
+.all-clock-desing:nth-of-type(4) .bottom-clock-desing::before {
+    animation: myanim-bottom 0.5s linear infinite;
+    animation-play-state: var(--Anim-work-bottom);
+}
+.all-clock-desing:nth-of-type(5) .bottom-clock-desing::before {
+    animation: myanim-bottom 0.5s infinite linear;
+    animation-play-state: var(--Anim-m);
+}
